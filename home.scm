@@ -8,7 +8,7 @@
 (home-environment
  (packages
   (map specification->package
-       '("neofetch" "zsh" "starship" "hyprpaper")))
+       '("neofetch" "zsh" "starship" "hyprpaper" "lazygit")))
 
  (services
   (list
