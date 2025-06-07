@@ -1,6 +1,0 @@
-(channel
-  (version 0)
-  (name 'ch-guix-channel)
-  (directory "channel")
-  (url "https://gitlab.com/ch4og/ch-guix-channel.git")
-  (branch "main"))

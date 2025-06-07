@@ -1,0 +1,49 @@
+
+{
+  "logo": {
+    "height": 8,
+    "padding": {
+      "left": 3,
+      "top": 1
+    },
+    "source": "~/.config/fastfetch/shika_guix.png",
+    "type": "kitty",
+    "width": 33
+  },
+  "modules": [
+    {
+      "format": "",
+      "type": "custom"
+    },
+    "title",
+    "separator",
+    {
+      "key": "os",
+      "type": "os"
+    },
+    {
+      "key": "kernel",
+      "type": "kernel"
+    },
+    {
+      "key": "up",
+      "type": "uptime"
+    },
+    {
+      "key": "wm",
+      "type": "wm"
+    },
+    {
+      "key": "shell",
+      "type": "shell"
+    },
+    {
+      "key": "term",
+      "type": "terminal"
+    },
+    {
+      "symbol": "circle",
+      "type": "colors"
+    }
+  ]
+}

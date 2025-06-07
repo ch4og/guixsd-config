@@ -1,0 +1,25 @@
+alias cat='bat -pp'
+alias dust='dust -d 1 '
+alias ip='ip -c'
+alias lg='lazygit'
+alias ls='eza --icons auto'
+alias o=xdg-open
+alias ssh='TERM=xterm-256color ssh'
+alias sudo=doas
+alias v=nvim
+
+guix() {
+  command guix time-machine -C ~/Code/Guix/guix-config/channels.scm -- "$@"
+}
+
+if [ -f /run/current-system/profile/etc/bash_completion.d/guix ]; then
+  source /run/current-system/profile/etc/bash_completion.d/guix
+fi
+
+if [[ -z "$GUIX_ENVIRONMENT" ]]; then 
+	source /etc/profile
+	fastfetch
+fi
+
+command -v starship > /dev/null 2>&1 && eval "$(starship init bash)"
+command -v zoxide > /dev/null 2>&1 && eval "$(zoxide init posix --hook prompt)" && alias cd=z
