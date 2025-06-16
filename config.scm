@@ -12,47 +12,49 @@
          (abs-path (canonicalize-path source-file)))
     (dirname abs-path)))
 
-(define guix (string-append "env guix time-machine -C " config-root "/channels.scm -- "))
+(define guix
+  (string-append "env guix time-machine -C " config-root "/channels.scm -- "))
 
-(define priv (if (zero? (system "which doas > /dev/null 2>&1"))
-                 "doas "
-                 "sudo "))
+(define priv
+  (if (zero? (system "which doas > /dev/null 2>&1")) "doas " "sudo "))
 
 (define (channels)
-  (list
-   (channel
-    (name 'guix)
-    (url "https://codeberg.org/guix/guix.git")
-    (introduction
-     (make-channel-introduction
-      "9edb3f66fd807b096b48283debdcddccfea34bad"
-      (openpgp-fingerprint "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA")))
-    (commit (get-last-commit "https://codeberg.org/guix/guix.git")))
+  (list (channel
+          (name 'guix)
+          (url "https://codeberg.org/guix/guix.git")
+          (introduction
+           (make-channel-introduction
+            "9edb3f66fd807b096b48283debdcddccfea34bad"
+            (openpgp-fingerprint
+             "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA")))
+          (commit (get-last-commit "https://codeberg.org/guix/guix.git")))
 
-   (channel
-    (name 'nonguix)
-    (url "https://gitlab.com/nonguix/nonguix.git")
-    (introduction
-     (make-channel-introduction
-      "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
-      (openpgp-fingerprint "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))
-    (commit (get-last-commit "https://gitlab.com/nonguix/nonguix.git")))
+        (channel
+          (name 'nonguix)
+          (url "https://gitlab.com/nonguix/nonguix.git")
+          (introduction
+           (make-channel-introduction
+            "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+            (openpgp-fingerprint
+             "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))
+          (commit (get-last-commit "https://gitlab.com/nonguix/nonguix.git")))
 
-   (channel
-    (name 'saayix)
-    (branch "main")
-    (url "https://codeberg.org/look/saayix")
-    (introduction
-     (make-channel-introduction
-      "12540f593092e9a177eb8a974a57bb4892327752"
-      (openpgp-fingerprint
-       "3FFA 7335 973E 0A49 47FC  0A8C 38D5 96BE 07D3 34AB"))))
+        (channel
+          (name 'saayix)
+          (branch "main")
+          (url "https://codeberg.org/look/saayix")
+          (introduction
+           (make-channel-introduction
+            "12540f593092e9a177eb8a974a57bb4892327752"
+            (openpgp-fingerprint
+             "3FFA 7335 973E 0A49 47FC  0A8C 38D5 96BE 07D3 34AB"))))
 
-   (channel
-    (name 'pognul)
-    (url "https://gitlab.com/ch4og/pognul-guix-channel.git")
-    (branch "main")
-    (commit (get-last-commit "https://gitlab.com/ch4og/pognul-guix-channel")))))
+        (channel
+          (name 'pognul)
+          (url "https://gitlab.com/ch4og/pognul-guix-channel.git")
+          (branch "main")
+          (commit (get-last-commit
+                   "https://gitlab.com/ch4og/pognul-guix-channel")))))
 
 (define (get-last-commit repo)
   (let ((p (open-pipe* OPEN_READ "git" "ls-remote" repo "HEAD")))
@@ -67,13 +69,26 @@
       (format #t "Command failed: ~a (exit code: ~a)\n" cmd status)
       (exit status))))
 
-(define (zyztem)
+(define (zyztem extra-args)
   (run "git add .")
-  (run (string-append priv guix " system reconfigure " config-root "/system/system.scm")))
+  (run (string-append priv
+                      guix
+                      " system reconfigure "
+                      (string-join extra-args " ")
+                      " "
+                      config-root
+                      "/system/system.scm"))
+  (run "sync"))
 
-(define (home)
+(define (home extra-args)
   (run "git add .")
-  (run (string-append guix " home reconfigure " config-root "/home/home.scm")))
+  (run (string-append guix
+                      " home reconfigure "
+                      (string-join extra-args " ")
+                      " "
+                      config-root
+                      "/home/home.scm"))
+  (run "sync"))
 
 (define (update)
   (with-output-to-file (string-append config-root "/channels.scm")
@@ -82,22 +97,27 @@
       (newline)
       (display ";; In future I would edit config.scm to use values from here")
       (newline)
-      (pretty-print `(list ,@(map channel->code (channels)))))))
-
-
+      (pretty-print `(list ,@(map channel->code
+                                  (channels)))))))
 
 (define (main args)
-  (let ((cmd (if (null? args) "" (car args))))
+  (let ((cmd (if (null? args) ""
+                 (car args)))
+        (rest (if (null? args)
+                  '()
+                  (cdr args))))
     (cond
-     ((string=? cmd "system") (zyztem))
-     ((string=? cmd "home") (home))
-     ((string=? cmd "update") (update))
-     (else
-      (display "Available commands:\n")
-      (display "  system  - reconfigure sytem\n")
-      (display "  home    - reconfigure home\n")
-      (display "  update  - update channels\n")
-      (exit 1)))))
+      ((string=? cmd "system")
+       (zyztem rest))
+      ((string=? cmd "home")
+       (home rest))
+      ((string=? cmd "update")
+       (update))
+      (else (display "Available commands:\n")
+            (display "  system [args...]  - reconfigure system")
+            (display "  home   [args...]  - reconfigure home\n")
+            (display "  update            - update channels\n")
+            (exit 1)))))
 
 (main (cdr (command-line)))
 
