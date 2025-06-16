@@ -8,6 +8,8 @@ After a quite short journey on NixOS I am starting my slow migration to Guix Sys
 
 <a href="https://gitlab.com/ch4og/guix-config"> <img src="https://www.svgrepo.com/show/448226/gitlab.svg" width="16"/> GitLab repo </a>
 
+<a href="https://github.com/ch4og/guix-config"> <img src="https://www.svgrepo.com/show/512317/github-142.svg" width="16"/> GitHub mirror </a>
+
 <a href="https://codeberg.org/ch4og/guix-config"> <img src="https://www.svgrepo.com/show/349319/codeberg.svg" width="16"/> Codeberg mirror </a>
 
 > [!WARNING]
