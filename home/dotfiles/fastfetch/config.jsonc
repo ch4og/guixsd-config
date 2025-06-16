@@ -1,14 +1,13 @@
-
 {
   "logo": {
-    "height": 8,
+    "height": 9,
     "padding": {
-      "left": 3,
+      "left": 2,
       "top": 1
     },
     "source": "~/.config/fastfetch/shika_guix.png",
     "type": "kitty",
-    "width": 33
+    "width": 37
   },
   "modules": [
     {
@@ -25,6 +24,17 @@
       "key": "kernel",
       "type": "kernel"
     },
+            {
+            "type": "cpu",
+	    "key": "cpu",
+	    "format": "{1}",
+            "showPeCoreCount": true,
+            "temp": false
+        },
+	{
+      "key": "ram",
+      "type": "memory"
+    },
     {
       "key": "up",
       "type": "uptime"
@@ -38,6 +48,7 @@
       "type": "shell"
     },
     {
+      "format": "{5}",
       "key": "term",
       "type": "terminal"
     },

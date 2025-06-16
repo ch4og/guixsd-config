@@ -1,4 +1,5 @@
 [[ -z "$GUIX_ENVIRONMENT" ]] && setopt no_nomatch && source /etc/profile
+source /run/current-system/profile/etc/profile.d/nix.sh
 
 typeset -U path cdpath fpath manpath
 autoload -U compinit && compinit
@@ -64,3 +65,7 @@ if exist guix && [ -f "$HOME/Code/Guix/guix-config/channels.scm" ]; then
 fi
 
 [[ -z "$GUIX_ENVIRONMENT" ]] && fastfetch
+
+if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+    exec sway --unsupported-gpu
+fi

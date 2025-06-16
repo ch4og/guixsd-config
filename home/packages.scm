@@ -1,7 +1,13 @@
 (use-modules
  (guix utils)
- (gnu packages))
-(map specification->package 
+ (gnu packages)
+ (gnu packages wm)
+ (nongnu packages nvidia)
+ (guix transformations))
+(define transform
+  (options->transformation
+   '((with-graft . "mesa=nvda"))))
+(append (map specification->package 
      '("starship"
        "hyprpaper"
        "lazygit"
@@ -14,8 +20,6 @@
        "btop"
        "fastfetch"
        "neovim"
-       "hyprland"
-       "waybar"
        "kitty"
        "firefox"
        "wl-clipboard"
@@ -47,4 +51,16 @@
        "fzf"
        "zsh"
        "zsh-syntax-highlighting"
-       ))
+       "curl"
+       "unzip"
+       "zip"
+       "font-awesome-nonfree"
+       "pavucontrol"
+       "nftables"
+       "pipewire"
+       "wireplumber"
+       "blueman"
+       "rofi-wayland"
+	))
+(map transform (map specification->package '("waybar@0.12.0" "swayfx" "ghostty" "hyprland")))
+	)
