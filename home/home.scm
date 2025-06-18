@@ -4,6 +4,8 @@
              (gnu home services sound)
              (gnu home services desktop)
 	     (guix gexp)
+	     (guix packages)
+	     (guix download)
 	     (nongnu packages nvidia))
 
 (define (home-dir) 
@@ -28,11 +30,6 @@
   (list
     (service home-pipewire-service-type)
     (service home-dbus-service-type)
-   (simple-service 'create-histfile-dir
-		   home-activation-service-type
-		   #~(begin
-                       (use-modules (guix build utils))
-                       (mkdir-p (string-append xdg-data-home "/oils"))))
 
    (simple-service
     'env-vars-service

@@ -1,5 +1,9 @@
-[[ -z "$GUIX_ENVIRONMENT" ]] && setopt no_nomatch && source /etc/profile
-source /run/current-system/profile/etc/profile.d/nix.sh
+if [[ -z "$GUIX_ENVIRONMENT" && -z "$IN_NIX_SHELL" ]]; then
+  setopt no_nomatch
+  source /etc/profile
+  source /run/current-system/profile/etc/profile.d/nix.sh
+  fastfetch
+fi
 
 typeset -U path cdpath fpath manpath
 autoload -U compinit && compinit
@@ -63,8 +67,6 @@ if exist guix && [ -f "$HOME/Code/Guix/guix-config/channels.scm" ]; then
     command guix time-machine -C "$HOME/Code/Guix/guix-config/channels.scm" -- "$@"
   }
 fi
-
-[[ -z "$GUIX_ENVIRONMENT" ]] && fastfetch
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
     exec sway --unsupported-gpu
