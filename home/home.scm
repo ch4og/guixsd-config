@@ -50,6 +50,8 @@
 		     (".config/waybar/config.jsonc" ,(dotfile "waybar/config.jsonc"))
 		     (".config/nixpkgs/config.nix" ,(dotfile "nix/nixpkgs-config.nix"))
 		     (".config/nix/nix.conf" ,(dotfile "nix/nix.conf"))
+		     (".config/rofi/config.rasi" ,(dotfile "rofi/config.rasi"))
+		     (".local/share/rofi/themes/custom.rasi" ,(dotfile "rofi/custom.rasi"))
 		     ))
 
   		(simple-service 'nix-channel-init
