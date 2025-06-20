@@ -62,12 +62,6 @@ exist fzf && eval "$(fzf --zsh)"
 exist starship && eval "$(starship init zsh)"
 exist zoxide && eval "$(zoxide init zsh)" && alias cd=z
 
-if exist guix && [ -f "$HOME/Code/Guix/guix-config/channels.scm" ]; then
-  guix() {
-    command guix time-machine -C "$HOME/Code/Guix/guix-config/channels.scm" -- "$@"
-  }
-fi
-
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
     exec env XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway GBM_BACKEND=nvidia-drm __GLX_VENDOR_LIBRARY_NAME=nvidia QT_QPA_PLATFORM=wayland WLR_RENDERER=vulkan sway --unsupported-gpu
 fi
