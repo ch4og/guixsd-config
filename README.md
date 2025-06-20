@@ -1,28 +1,30 @@
 # GuixSD Configuration
 
-![image](./assets/screenshot.png)
+![Screenshot](./assets/screenshot.png)
 
-This repository contains my personal GuixSD configuration.
+Personal Guix System configuration repository.
 
-After a quite short journey on NixOS I am starting my slow migration to Guix System.
+After a short NixOS journey, I am slowly migrating to Guix System.
 
-> **Note:** [My personal Guix channel](https://gitlab.com/ch4og/pognul-guix-channel) is used here
+## Links
 
-<a href="https://gitlab.com/ch4og/guix-config"> <img src="https://www.svgrepo.com/show/448226/gitlab.svg" width="16"/> GitLab repo </a>
+- [Dotfiles directory](./home/dotfiles)
+- [My personal Guix channel (GitLab)](https://gitlab.com/ch4og/pognul-guix-channel)
 
-<a href="https://github.com/ch4og/guix-config"> <img src="https://www.svgrepo.com/show/512317/github-142.svg" width="16"/> GitHub mirror </a>
+### Mirrors
 
-<a href="https://codeberg.org/ch4og/guix-config"> <img src="https://www.svgrepo.com/show/349319/codeberg.svg" width="16"/> Codeberg mirror </a>
+[<img src="https://www.svgrepo.com/show/448226/gitlab.svg" width="16"/> GitLab repo](https://gitlab.com/ch4og/guix-config)  
+[<img src="https://www.svgrepo.com/show/512317/github-142.svg" width="16"/> GitHub mirror](https://github.com/ch4og/guix-config)  
+[<img src="https://www.svgrepo.com/show/349319/codeberg.svg" width="16"/> Codeberg mirror](https://codeberg.org/ch4og/guix-config)
 
-> [!WARNING]
-> This is extremely WIP.
+> **Warning:** This is extremely WIP.
 
 ## Acknowledgments
 
 Thanks to these inspiring people:
 
-- [@agx-r](https://codeberg.org/agx-r)
-- [@daviwil](https://codeberg.org/daviwil) and their project [System Crafters](https://systemcrafters.net/)
+- [@agx-r](https://codeberg.org/agx-r)  
+- [@daviwil](https://codeberg.org/daviwil) and [System Crafters](https://systemcrafters.net/)
+- [@sarg](https://github.com/sarg)
 
-No licensed code was copied without attribution or license compliance. Some code was independently inspired, not copied or modified, so no license terms were violated.
-
+No licensed code was copied without attribution or compliance. Some code was independently inspired, not copied or modified.
