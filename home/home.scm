@@ -28,7 +28,7 @@
 
  (services
   (list
-    (service home-dbus-service-type)
+   (service home-dbus-service-type)
 
    (simple-service
     'env-vars-service
@@ -56,14 +56,13 @@
 		     (".config/ghostty/themes/ch4og" ,(dotfile "ghostty/themes/ch4og"))
 		     ))
 
-  		(simple-service 'nix-channel-init
-  				home-activation-service-type
-  				#~(begin
-				    (use-modules (guix gexp))
-  				    (system* "nix-channel" "--add" "https://nixos.org/channels/nixpkgs-unstable" "nixpkgs")
-  				    (system* "nix-channel" "--update")
-				    (system "ln -s \"/nix/var/nix/profiles/per-user/$USER/profile\" ~/.nix-profile"))
-		    )
-   ))
- 
- )
+   (simple-service 'nix-channel-init
+  		   home-activation-service-type
+  		   #~(begin
+		       (use-modules (guix gexp))
+  		       (system* "nix-channel" "--add" "https://nixos.org/channels/nixpkgs-unstable" "nixpkgs")
+  		       (system* "nix-channel" "--update")
+		       )
+		   ))
+  
+  )
