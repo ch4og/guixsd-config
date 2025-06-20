@@ -28,7 +28,6 @@
 
  (services
   (list
-    (service home-pipewire-service-type)
     (service home-dbus-service-type)
 
    (simple-service
@@ -48,10 +47,13 @@
 		     (".config/fastfetch/shika_guix.png" ,(dotfile "fastfetch/shika_guix.png"))
 		     (".config/nvim/init.lua" ,(dotfile "nvim/init.lua"))
 		     (".config/waybar/config.jsonc" ,(dotfile "waybar/config.jsonc"))
+		     (".config/waybar/style.css" ,(dotfile "waybar/style.css"))
 		     (".config/nixpkgs/config.nix" ,(dotfile "nix/nixpkgs-config.nix"))
 		     (".config/nix/nix.conf" ,(dotfile "nix/nix.conf"))
 		     (".config/rofi/config.rasi" ,(dotfile "rofi/config.rasi"))
 		     (".local/share/rofi/themes/custom.rasi" ,(dotfile "rofi/custom.rasi"))
+		     (".config/ghostty/config" ,(dotfile "ghostty/config"))
+		     (".config/ghostty/themes/ch4og" ,(dotfile "ghostty/themes/ch4og"))
 		     ))
 
   		(simple-service 'nix-channel-init

@@ -223,18 +223,26 @@ bindsym $mod+r mode "resize"
 #        inactive_workspace #32323200 #32323200 #5c5c5c
 #    }
 #}
-bar swaybar_command waybar
+
+exec waybar
+exec pipewire
+exec wireplumber
+
 layer_effects "waybar" {
     blur enable;
     blur_xray enable;
     blur_ignore_transparent enable;
     shadows enable;
-    corner_radius 20;
+    corner_radius 0;
 }
+default_border pixel 3
+gaps inner 15
 
+default_border pixel
 
 blur enable
 shadows enable
-corner_radius 3
-
+corner_radius 18 
+shadow_blur_radius 40
+shadow_color #000000b4
 #include /gnu/store/8r2b3nw4g2x66dkhm33pkl7a099j345k-sway-1.10.1/etc/sway/config.d/*

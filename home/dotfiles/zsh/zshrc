@@ -69,5 +69,5 @@ if exist guix && [ -f "$HOME/Code/Guix/guix-config/channels.scm" ]; then
 fi
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-    exec sway --unsupported-gpu
+    exec env XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway GBM_BACKEND=nvidia-drm __GLX_VENDOR_LIBRARY_NAME=nvidia QT_QPA_PLATFORM=wayland WLR_RENDERER=vulkan sway --unsupported-gpu
 fi

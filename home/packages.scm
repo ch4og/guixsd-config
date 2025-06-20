@@ -23,8 +23,8 @@
        "kitty"
        "firefox"
        "wl-clipboard"
-       "xdg-desktop-portal-hyprland"
-       "xdg-desktop-portal-gtk"
+       "xdg-desktop-portal-wlr"
+       "xdg-desktop-portal"
        "grim"
        "ripgrep"
        "fd"
@@ -61,6 +61,7 @@
        "wireplumber"
        "blueman"
        "rofi-wayland"
+       "font-google-noto"
 	))
 (map transform (map specification->package '("waybar@0.12.0" "swayfx" "ghostty" "hyprland")))
 	)
