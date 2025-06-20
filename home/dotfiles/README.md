@@ -10,7 +10,7 @@ Personal dotfiles managed with **GNU Guix Home** and organized using the [**GNU 
 |-|-|
 |`sway/.config/sway/config`|`~/.config/sway/config`|
 |`zsh/.zshrc`|`~/.zshrc`|
-|`rofi/.local/share/rofi/themes/custom.rasi`|`.local/share/rofi/themes/custom.rasi`|
+|`rofi/.local/share/rofi/themes/custom.rasi`|`~/.local/share/rofi/themes/custom.rasi`|
 
 #### If you want to use it with Guix Home:
 ```scheme
