@@ -1,4 +1,4 @@
-#!/usr/bin/env -S guix shell guile guile-json -- guile --no-auto-compile
+#!/usr/bin/env -S guix shell guile guile-json guile-gcrypt -- guile --no-auto-compile
 !#
 (use-modules (guix channels)
              (gnu services)
@@ -39,7 +39,7 @@
     (dirname abs-path)))
 
 (define guix
-  (string-append "env guix time-machine -C " config-root "/channels.scm -- "))
+  (string-append "guix time-machine -C " config-root "/channels.scm -- "))
 
 (define priv
   (if (zero? (system "which doas > /dev/null 2>&1")) "doas " "sudo "))
@@ -170,7 +170,6 @@
          CHANNEL-CONFIGS)))
 
 (define (zyztem extra-args)
-  (run "git add .")
   (run (string-append priv
                       guix
                       " system reconfigure "
@@ -178,17 +177,14 @@
                       " "
                       config-root
                       "/system/system.scm"))
-  (run "sync"))
+  (run "guix pull"))
 
 (define (home extra-args)
-  (run "git add .")
-  (run (string-append guix
-                      " home reconfigure "
+  (run (string-append "guix home reconfigure "
                       (string-join extra-args " ")
                       " "
                       config-root
-                      "/home/home.scm"))
-  (run "sync"))
+                      "/home/home.scm")))
 
 (define (update)
   (let* ((channels-file (string-append config-root "/channels.scm"))
