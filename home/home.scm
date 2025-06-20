@@ -37,12 +37,10 @@
 
    (simple-service 'dotfiles
 		   home-files-service-type 
-		   `((".config/oils/oshrc" ,(dotfile "oils/oshrc"))
-		     (".zshrc" ,(dotfile "zsh/zshrc"))
+		   `((".zshrc" ,(dotfile "zsh/zshrc"))
 		     (".zprofile" ,(dotfile "zsh/zprofile"))
 		     (".config/starship.toml", (dotfile "starship/starship.toml"))
 		     (".config/fastfetch/config.jsonc" ,(dotfile "fastfetch/config.jsonc"))
-		     (".config/kitty/kitty.conf" ,(dotfile "kitty/kitty.conf"))
 		     (".config/sway/config" ,(dotfile "sway/config"))
 		     (".config/fastfetch/shika_guix.png" ,(dotfile "fastfetch/shika_guix.png"))
 		     (".config/nvim/init.lua" ,(dotfile "nvim/init.lua"))
