@@ -38,7 +38,6 @@
         (service home-dotfiles-service-type
                  (home-dotfiles-configuration (directories '("./dotfiles"))
                                               (layout 'stow)
-					      (excluded '(".*~" ".*\\.swp" "\\.git" "\\.gitignore" "README.md"))
                                               (packages '("zsh" "starship"
                                                           "fastfetch"
                                                           "sway"

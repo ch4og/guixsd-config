@@ -18,7 +18,6 @@ Personal dotfiles managed with **GNU Guix Home** and organized using the [**GNU 
   (home-dotfiles-configuration
     (directories '("./dotfiles"))
     (layout 'stow)
-    (excluded '(".*~" ".*\\.swp" "\\.git" "\\.gitignore" "README.md"))
     (packages '("zsh" "sway" "other-package-name"))))
 ```
 
