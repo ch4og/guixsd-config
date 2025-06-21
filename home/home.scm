@@ -28,30 +28,31 @@
 
  (services
   (append (list (service home-dbus-service-type)
-        (service home-pipewire-service-type)
+		(service home-pipewire-service-type)
 
-        (simple-service 'env-vars-service
-                        home-environment-variables-service-type
-                        '(("TERM" . "xterm-256color")
-                          ("NIXPKGS_ALLOW_UNFREE" . "1")))
+		(simple-service 'env-vars-service
+				home-environment-variables-service-type
+				'(("TERM" . "xterm-256color")
+				  ("NIXPKGS_ALLOW_UNFREE" . "1")))
 
-        (service home-dotfiles-service-type
-                 (home-dotfiles-configuration (directories '("./dotfiles"))
-                                              (layout 'stow)
-                                              (packages '("fastfetch"
-                                                          "ghostty"
-                                                          "nix"
-                                                          "nvim"
-                                                          "rofi"
-                                                          "starship"
-                                                          "sway"
-                                                          "waybar"
-                                                          "zsh"))))
+		(service home-dotfiles-service-type
+			 (home-dotfiles-configuration (directories '("./dotfiles"))
+						      (layout 'stow)
+						      (packages '("fastfetch"
+								  "ghostty"
+								  "nix"
+								  "nvim"
+								  "rofi"
+								  "starship"
+								  "sway"
+								  "waybar"
+								  "xdg-desktop-portal"
+								  "zsh"))))
 
-        (simple-service 'nix-channel-init home-activation-service-type
-                        #~(begin
-                            (use-modules (guix gexp))
-                            (system
-                             "nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs")
-                            (system "nix-channel --update"))))
+		(simple-service 'nix-channel-init home-activation-service-type
+				#~(begin
+				    (use-modules (guix gexp))
+				    (system
+				     "nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs")
+				    (system "nix-channel --update"))))
 	  %base-home-services)))
