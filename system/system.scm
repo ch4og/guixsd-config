@@ -112,7 +112,15 @@
                 (simple-service 'doas-config-file etc-service-type
                                 (list `("doas.conf" ,(plain-file "doas.conf"
 								 "permit persist :wheel\n"))))
-                (service nix-service-type)
+                (service nix-service-type
+			 (nix-configuration (extra-config 
+					     '("allowed-users = @wheel root"
+					       "auto-optimise-store = true"
+					       "experimental-features = nix-command flakes"
+					       "substituters = https://nixos-cache-proxy.cofob.dev https://cache.nixos.org/"
+					       "trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+					       "trusted-users = @wheel root"
+					       "warn-dirty = false"))))
                 (service bluetooth-service-type)
                 ;; WIP
                 ;;
