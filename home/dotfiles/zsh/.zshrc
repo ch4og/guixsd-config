@@ -1,10 +1,3 @@
-if [[ -z "$GUIX_ENVIRONMENT" && -z "$IN_NIX_SHELL" ]]; then
-  setopt no_nomatch
-  source /etc/profile
-  source /run/current-system/profile/etc/profile.d/nix.sh
-  fastfetch
-fi
-
 typeset -U path cdpath fpath manpath
 autoload -U compinit && compinit
 HISTSIZE="10000"
@@ -65,3 +58,5 @@ exist zoxide && eval "$(zoxide init zsh)" && alias cd=z
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
     exec env XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway GBM_BACKEND=nvidia-drm __GLX_VENDOR_LIBRARY_NAME=nvidia QT_QPA_PLATFORM=wayland WLR_RENDERER=vulkan sway --unsupported-gpu
 fi
+
+[[ -z "$GUIX_ENVIRONMENT" && -z "$IN_NIX_SHELL" ]] && exist fastfetch && fastfetch
