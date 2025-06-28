@@ -10,12 +10,11 @@ After a short NixOS detour, I’m gradually migrating my systems to Guix.
 * Links
 
 - [[./home/dotfiles][Dotfiles directory]]
-- [[https://gitlab.com/ch4og/pognul-guix-channel][My personal Guix channel (GitLab)]]
+- [[https://codeberg.org/ch4og/pognul-guix-channel][My personal Guix channel (Codeberg)]]
 
 ** Mirrors
 
 - [[https://codeberg.org/ch4og/guix-config][Codeberg]]
-- [[https://gitlab.com/ch4og/guix-config][GitLab]]
 - [[https://github.com/ch4og/guix-config][GitHub]]
 
 * Acknowledgments

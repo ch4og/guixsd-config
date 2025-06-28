@@ -23,12 +23,12 @@
      "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
      "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")
     (saayix
-     "https://codeberg.org/look/saayix"
+     "https://codeberg.org/look/saayix.git"
      "12540f593092e9a177eb8a974a57bb4892327752"
      "3FFA 7335 973E 0A49 47FC  0A8C 38D5 96BE 07D3 34AB"
      "main")
     (pognul
-     "https://gitlab.com/ch4og/pognul-guix-channel.git"
+     "https://codeberg.org/ch4og/pognul-guix-channel.git"
      #f
      #f
      "main")))
