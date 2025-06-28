@@ -22,7 +22,7 @@
               "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
       (channel
         (name 'saayix)
-        (url "https://codeberg.org/look/saayix")
+        (url "https://codeberg.org/look/saayix.git")
         (branch "main")
         (commit
           "9995ab6fb8ce2eb8a603439caed86b8daf69c486")
@@ -33,7 +33,7 @@
               "3FFA 7335 973E 0A49 47FC  0A8C 38D5 96BE 07D3 34AB"))))
       (channel
         (name 'pognul)
-        (url "https://gitlab.com/ch4og/pognul-guix-channel.git")
+        (url "https://codeberg.org/ch4og/pognul-guix-channel.git")
         (branch "main")
         (commit
           "1d721bd772b9b050b97b54e434fb3bcac3ddef77")))
