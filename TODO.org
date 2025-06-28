@@ -1,0 +1,10 @@
+#+TITLE: TODOs for Guix System Config
+
+Here I keep some things that I might forget to do:
+
+* TODO Zsh: syntax highlighting, autosuggestions, substring search
+* TODO Rewrite =config.scm= to use channels from =channels.scm=
+* TODO Doom Emacs: good integration
+* TODO Move all dotfiles and configs from NixOS config
+* TODO Package all tools and utilities I need
+* TODO Make Nix fully declarative and integrate with Guix

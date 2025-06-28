@@ -1,0 +1,29 @@
+#+TITLE: Guix System Configuration
+#+OPTIONS: toc:nil num:nil
+
+[[./assets/screenshot.png]]
+
+This is my personal configuration repository for the *GNU Guix System*.
+
+After a short NixOS detour, I’m gradually migrating my systems to Guix.
+
+* Links
+
+- [[./home/dotfiles][Dotfiles directory]]
+- [[https://gitlab.com/ch4og/pognul-guix-channel][My personal Guix channel (GitLab)]]
+
+** Mirrors
+
+- [[https://codeberg.org/ch4og/guix-config][Codeberg]]
+- [[https://gitlab.com/ch4og/guix-config][GitLab]]
+- [[https://github.com/ch4og/guix-config][GitHub]]
+
+* Acknowledgments
+
+Much appreciation to the people and projects that inspired this work:
+
+- [[https://codeberg.org/agx-r][@agx-r]]
+- [[https://codeberg.org/daviwil][@daviwil]] and [[https://systemcrafters.net/][System Crafters]]
+- [[https://github.com/sarg][@sarg]]
+
+No licensed code was copied without attribution or compliance. Some code was inspired, not copied or modified.
