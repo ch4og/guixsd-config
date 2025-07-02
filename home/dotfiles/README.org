@@ -10,8 +10,8 @@ automatically linked into =~= via the =home-dotfiles-service-type=.
 * Directory Mapping Example
 
 | Source                                      | Dest in =$HOME=                          |
-|--------------------------------------------+------------------------------------------|
-| =sway/.config/sway/config=                  | =~/.config/sway/config=                  |
+|---------------------------------------------+------------------------------------------|
+| =hyprland/.config/hypr/hyprland.conf=       | =~/.config/hypr/hyprland.conf=           |
 | =zsh/.zshrc=                                | =~/.zshrc=                               |
 | =rofi/.local/share/rofi/themes/custom.rasi= | =~/.local/share/rofi/themes/custom.rasi= |
 
@@ -24,19 +24,19 @@ automatically linked into =~= via the =home-dotfiles-service-type=.
   (home-dotfiles-configuration
     (directories '("./dotfiles"))
     (layout 'stow)
-    (packages '("zsh" "sway" "other-package-name"))))
+    (packages '("zsh" "hyprland" "other-package-name"))))
 #+end_src
 
 ** GNU Stow (recommended)
 
 #+begin_src sh
-stow sway zsh other-package-name -t ~
+stow hyprland zsh other-package-name -t ~
 #+end_src
 
 ** Manual
 
 #+begin_src sh
 cp zsh/.zshrc ~/.zshrc
-cp sway/.* ~ -r
+cp hyprland/.* ~ -r
 cp rofi/.local/share/rofi/themes/custom.rasi ~/.local/share/rofi/themes/custom.rasi
 #+end_src
