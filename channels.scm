@@ -4,7 +4,7 @@
         (name 'guix)
         (url "https://codeberg.org/guix/guix.git")
         (commit
-          "6d4fe27697d0a003171d117c5e05f2f24d1b43f3")
+          "40e0f4fcc06893d2903b007b567cf8cbf3ae7fbf")
         (introduction
           (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -14,26 +14,15 @@
         (name 'nonguix)
         (url "https://gitlab.com/nonguix/nonguix.git")
         (commit
-          "473e5a62cd512cc0d5b4ac2c33be0bc0d0379435")
+          "39424fb09813cebac8d323da75abf80f01e2641f")
         (introduction
           (make-channel-introduction
             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
             (openpgp-fingerprint
               "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
       (channel
-        (name 'saayix)
-        (url "https://codeberg.org/look/saayix.git")
-        (branch "main")
-        (commit
-          "9995ab6fb8ce2eb8a603439caed86b8daf69c486")
-        (introduction
-          (make-channel-introduction
-            "12540f593092e9a177eb8a974a57bb4892327752"
-            (openpgp-fingerprint
-              "3FFA 7335 973E 0A49 47FC  0A8C 38D5 96BE 07D3 34AB"))))
-      (channel
         (name 'pognul)
         (url "https://codeberg.org/ch4og/pognul-guix-channel.git")
         (branch "main")
         (commit
-          "1d721bd772b9b050b97b54e434fb3bcac3ddef77")))
+          "4d7ee41049ef2998aa2a5fff684f3c0c7ff4badc")))
