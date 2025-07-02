@@ -44,7 +44,7 @@
 								  "nvim"
 								  "rofi"
 								  "starship"
-								  "sway"
+								  "hyprland"
 								  "waybar"
 								  "xdg-desktop-portal"
 								  "zsh"))))
