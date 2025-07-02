@@ -22,11 +22,6 @@
      "https://gitlab.com/nonguix/nonguix.git"
      "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
      "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")
-    (saayix
-     "https://codeberg.org/look/saayix.git"
-     "12540f593092e9a177eb8a974a57bb4892327752"
-     "3FFA 7335 973E 0A49 47FC  0A8C 38D5 96BE 07D3 34AB"
-     "main")
     (pognul
      "https://codeberg.org/ch4og/pognul-guix-channel.git"
      #f
@@ -39,10 +34,7 @@
     (dirname abs-path)))
 
 (define guix
-  (string-append "guix time-machine -C " config-root "/channels.scm -- "))
-
-(define priv
-  (if (zero? (system "which doas > /dev/null 2>&1")) "doas " "sudo "))
+  (string-append "sudo guix time-machine -C " config-root "/channels.scm -- "))
 
 (define (read-all port)
   (let loop ((lines '()))
@@ -64,44 +56,44 @@
    (vector->list jobs-vec)))
 
 (define (get-cuirass-commits)
-      (catch #t
-        (lambda ()
-          (let* ((curl-port (open-pipe* OPEN_READ "curl" "-Ls" HISTORY-URL))
-                 (json-str (read-all curl-port))
-                 (json-data (call-with-input-string json-str json->scm))
-                 (entries (vector->list json-data))
-                 (first-good
-                  (find
-                   (lambda (entry-alist)
-                     (all-jobs-success? (assoc-ref entry-alist "jobs")))
-                   entries)))
-            (close-pipe curl-port)
-            (if first-good
-                (let* ((eval-id (assoc-ref first-good "evaluation"))
-                       (eval-url (string-append BASE-URL "/api/evaluation?id=" (number->string eval-id)))
-                       (eval-port (open-pipe* OPEN_READ "curl" "-Ls" eval-url))
-                       (eval-json-str (read-all eval-port))
-                       (eval-data (call-with-input-string eval-json-str json->scm))
-                       (checkouts (assoc-ref eval-data "checkouts")))
-                  (close-pipe eval-port)
-                  (let ((guix-commit #f)
-                        (nonguix-commit #f))
-                    (for-each
-                     (lambda (co)
-                       (let ((channel (assoc-ref co "channel"))
-                             (commit (assoc-ref co "commit")))
-                         (cond
-                          ((string=? channel "guix")
-                           (set! guix-commit commit))
-                          ((string=? channel "nonguix")
-                           (set! nonguix-commit commit)))))
-                     (vector->list checkouts))
-                    (if (and guix-commit nonguix-commit)
-                        (cons guix-commit nonguix-commit)
-                        #f)))
-                #f)))
-        (lambda (key . args)
-          #f)))
+  (catch #t
+         (lambda ()
+           (let* ((curl-port (open-pipe* OPEN_READ "curl" "-Ls" HISTORY-URL))
+                  (json-str (read-all curl-port))
+                  (json-data (call-with-input-string json-str json->scm))
+                  (entries (vector->list json-data))
+                  (first-good
+                   (find
+                    (lambda (entry-alist)
+                      (all-jobs-success? (assoc-ref entry-alist "jobs")))
+                    entries)))
+             (close-pipe curl-port)
+             (if first-good
+                 (let* ((eval-id (assoc-ref first-good "evaluation"))
+			(eval-url (string-append BASE-URL "/api/evaluation?id=" (number->string eval-id)))
+			(eval-port (open-pipe* OPEN_READ "curl" "-Ls" eval-url))
+			(eval-json-str (read-all eval-port))
+			(eval-data (call-with-input-string eval-json-str json->scm))
+			(checkouts (assoc-ref eval-data "checkouts")))
+                   (close-pipe eval-port)
+                   (let ((guix-commit #f)
+                         (nonguix-commit #f))
+                     (for-each
+                      (lambda (co)
+			(let ((channel (assoc-ref co "channel"))
+                              (commit (assoc-ref co "commit")))
+                          (cond
+                           ((string=? channel "guix")
+                            (set! guix-commit commit))
+                           ((string=? channel "nonguix")
+                            (set! nonguix-commit commit)))))
+                      (vector->list checkouts))
+                     (if (and guix-commit nonguix-commit)
+                         (cons guix-commit nonguix-commit)
+                         #f)))
+                 #f)))
+         (lambda (key . args)
+           #f)))
 
 (define (get-channel-commit channel-name repo-url cuirass-commits)
   (cond
@@ -128,23 +120,23 @@
         (commit (channel-commit ch))
         (intro (channel-introduction ch)))
     `(channel
-       (name (quote ,name))
-       (url ,url)
-       ,@(if branch `((branch ,branch)) '())
-       ,@(if commit `((commit ,commit)) '())
-       ,@(if intro
-             (let* ((first-commit (channel-introduction-first-signed-commit intro))
-                    (config (find (lambda (cfg) (eq? (car cfg) name)) CHANNEL-CONFIGS))
-                    (fingerprint (cond
-                                   ((match config
-                                      ((name url intro-commit fp) fp)
-                                      ((name url intro-commit fp branch) fp)
-                                      (_ #f))))))
-               `((introduction
-                   (make-channel-introduction
-                     ,first-commit
-                     (openpgp-fingerprint ,fingerprint)))))
-             '()))))
+      (name (quote ,name))
+      (url ,url)
+      ,@(if branch `((branch ,branch)) '())
+      ,@(if commit `((commit ,commit)) '())
+      ,@(if intro
+            (let* ((first-commit (channel-introduction-first-signed-commit intro))
+                   (config (find (lambda (cfg) (eq? (car cfg) name)) CHANNEL-CONFIGS))
+                   (fingerprint (cond
+                                 ((match config
+                                    ((name url intro-commit fp) fp)
+                                    ((name url intro-commit fp branch) fp)
+                                    (_ #f))))))
+              `((introduction
+                 (make-channel-introduction
+                  ,first-commit
+                  (openpgp-fingerprint ,fingerprint)))))
+            '()))))
 
 (define (make-configured-channel config cuirass-commits)
   (match config
@@ -152,16 +144,16 @@
      (let ((branch (if (null? rest) #f (car rest)))
            (channel-name (if (symbol? name) (symbol->string name) name)))
        (channel
-         (name (if (symbol? name) name (string->symbol name)))
-         (url url)
-         (branch branch)
-         (introduction 
-           (if (and intro-commit fingerprint)
-               (make-channel-introduction
-                 intro-commit
-                 (openpgp-fingerprint fingerprint))
-               #f))
-         (commit (get-channel-commit channel-name url cuirass-commits)))))))
+        (name (if (symbol? name) name (string->symbol name)))
+        (url url)
+        (branch branch)
+        (introduction 
+         (if (and intro-commit fingerprint)
+             (make-channel-introduction
+              intro-commit
+              (openpgp-fingerprint fingerprint))
+             #f))
+        (commit (get-channel-commit channel-name url cuirass-commits)))))))
 
 (define (channels)
   (let ((cuirass-commits (get-cuirass-commits)))
@@ -170,8 +162,7 @@
          CHANNEL-CONFIGS)))
 
 (define (zyztem extra-args)
-  (run (string-append priv
-                      guix
+  (run (string-append guix
                       " system reconfigure "
                       (string-join extra-args " ")
                       " "
@@ -221,17 +212,25 @@
                   '()
                   (cdr args))))
     (cond
-      ((string=? cmd "system")
-       (zyztem rest))
-      ((string=? cmd "home")
-       (home rest))
-      ((string=? cmd "update")
-       (update))
-      (else (display "Available commands:\n")
-            (display "  system [args...]  - reconfigure system\n")
-            (display "  home   [args...]  - reconfigure home\n")
-            (display "  update            - update channels\n")
-            (exit 1)))))
+     ((string=? cmd "system")
+      (zyztem rest))
+     ((string=? cmd "home")
+      (home rest))
+     ((string=? cmd "update")
+      (update))
+     ((string=? cmd "system/")
+      (zyztem rest))
+     ((string=? cmd "home/")
+      (home rest))
+     ((string=? cmd "channels")
+      (update))
+     ((string=? cmd "channels.scm")
+      (update))
+     (else (display "Available commands:\n")
+           (display "  system [args...]  - reconfigure system\n")
+           (display "  home   [args...]  - reconfigure home\n")
+           (display "  update            - update channels\n")
+           (exit 1)))))
 
 (main (cdr (command-line)))
 
