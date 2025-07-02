@@ -45,6 +45,7 @@
 								  "rofi"
 								  "starship"
 								  "hyprland"
+								  "hyprpaper"
 								  "waybar"
 								  "xdg-desktop-portal"
 								  "zsh"))))
