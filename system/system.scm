@@ -23,6 +23,8 @@
              ;; (pognul services ly)
              (guix build syscalls))
 
+(define %user "ch")
+
 (define config-root
   (let* ((source-file (current-filename))
          (abs-path (canonicalize-path source-file)))
@@ -85,8 +87,8 @@
                              ) %base-file-systems))
 
  (users (cons (user-account
-               (name "ch")
-               (comment "ch4og")
+               (name %user)
+               (comment %user)
                (group "users")
                (shell (file-append (specification->package "zsh") "/bin/zsh"))
                (supplementary-groups '("wheel" "audio" "video")))
@@ -94,14 +96,7 @@
 
  (packages (remove (lambda (pkg)
                      (string=? (package-name pkg) "nano"))
-                   (append (map specification->package
-                                '("git" "vim" "opendoas" "nix" "swayfx"
-                                  "hyprland")) %base-packages)))
-
- (setuid-programs (append (list (setuid-program (program (file-append (specification->package
-                                                                       "opendoas")
-								      "/bin/doas"))))
-                          %setuid-programs))
+                   (append (load "packages.scm") %base-packages)))
 
  (services
   (append (list (service openssh-service-type
@@ -109,9 +104,6 @@
                                                           "openssh-sans-x"))
                                                 (port-number 2222)))
                 (service nvidia-service-type)
-                (simple-service 'doas-config-file etc-service-type
-                                (list `("doas.conf" ,(plain-file "doas.conf"
-								 "permit persist :wheel\n"))))
                 (service nix-service-type
 			 (nix-configuration (extra-config 
 					     '("allowed-users = @wheel root"
@@ -153,3 +145,5 @@
 											  ("net.ipv6.conf.all.disable_ipv6" . "1"))
 											%default-sysctl-settings)))))))
  (name-service-switch %mdns-host-lookup-nss))
+
+
