@@ -48,7 +48,6 @@ exist lazygit && alias lg='lazygit'
 exist eza && alias ls='eza --icons auto'
 exist xdg-open && alias o=xdg-open
 exist ssh && alias ssh='TERM=xterm-256color ssh'
-exist doas && alias sudo=doas
 exist nvim && alias v=nvim
 
 exist fzf && eval "$(fzf --zsh)"
