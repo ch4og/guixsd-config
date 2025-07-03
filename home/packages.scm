@@ -44,6 +44,7 @@
 	    "pcmanfm"
 	    "pipewire"
 	    "qbittorrent-enhanced"
+	    "quickshell"
 	    "remmina"
 	    "ripgrep"
 	    "rofi-wayland"
