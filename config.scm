@@ -1,5 +1,6 @@
 #!/usr/bin/env -S guix shell guile guile-json guile-gcrypt -- guile --no-auto-compile
 !#
+;;; Copyright © 2025 Nikita Mitasov <mitanick@ya.ru>
 (use-modules (guix channels)
              (gnu services)
              (ice-9 match)

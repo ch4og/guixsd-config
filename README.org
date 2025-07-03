@@ -5,24 +5,25 @@
 
 This is my personal configuration repository for the *GNU Guix System*.
 
-After a short NixOS detour, I’m gradually migrating my systems to Guix.
+After using NixOS for a while, I’m moving my systems to Guix.
 
 * Links
 
 - [[./home/dotfiles][Dotfiles directory]]
-- [[https://codeberg.org/ch4og/pognul-guix-channel][My personal Guix channel (Codeberg)]]
-
-** Mirrors
-
-- [[https://codeberg.org/ch4og/guix-config][Codeberg]]
-- [[https://github.com/ch4og/guix-config][GitHub]]
+- [[https://git.ch4og.com/ch4og/pognul-guix-channel][My personal Guix channel]]
 
 * Acknowledgments
 
-Much appreciation to the people and projects that inspired this work:
+Big thanks to people and projects that inspired me:
 
-- [[https://codeberg.org/agx-r][@agx-r]]
-- [[https://codeberg.org/daviwil][@daviwil]] and [[https://systemcrafters.net/][System Crafters]]
-- [[https://github.com/sarg][@sarg]]
+- [[https://codeberg.org/agx-r][@agx-r]] (Codeberg)
+- [[https://codeberg.org/daviwil][@daviwil]] (Codeberg & [[https://systemcrafters.net/][System Crafters]])
+- [[https://github.com/sarg/dotfiles][sarg/dotfiles]] (GitHub)
+- [[https://github.com/end-4/dots-hyprland][end-4/dots-hyprland]] (GitHub)
+- [[https://github.com/caelestia-dots/shell][caelestia-dots/shell]] (GitHub)
 
-No licensed code was copied without attribution or compliance. Some code was inspired, not copied or modified.
+No licensed code was copied without credit or compliance. Some code was inspired, not copied or modified.
+All files that include code by others have a note about it in their heading.
+
+All other files — which do *not* contain such a notice — are authored by me and distributed under the GNU GPL v3.
+Licenses for reused third-party code are included in this repo.
