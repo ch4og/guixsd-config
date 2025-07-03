@@ -39,7 +39,6 @@
 			 (home-dotfiles-configuration (directories '("./dotfiles"))
 						      (layout 'stow)
 						      (packages '("fastfetch"
-								  "ghostty"
 								  "nix"
 								  "nvim"
 								  "rofi"
