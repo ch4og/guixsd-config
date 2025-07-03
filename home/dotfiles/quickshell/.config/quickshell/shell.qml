@@ -1,3 +1,4 @@
+// Copyright © 2025 Nikita Mitasov <mitanick@ya.ru>
 import Quickshell // for PanelWindow
 import QtQuick // for Text
 

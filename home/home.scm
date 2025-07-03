@@ -1,3 +1,4 @@
+;;; Copyright © 2025 Nikita Mitasov <mitanick@ya.ru>
 (use-modules (gnu home)
              (gnu packages)
              (gnu home services)

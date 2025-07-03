@@ -1,3 +1,9 @@
+/* Author: Newman Sanchez (https://github.com/newmanls) */
+/* Copyright © 2025 Nikita Mitasov <mitanick@ya.ru> */
+
+/* This file is a modified version of `spotlight-dark.rasi` from https://github.com/newmanls/rofi-themes-collection */
+/* Originally licensed under the GNU GPLv3 */
+
 * {
 background-color: transparent;
 bg0: #24242499;
