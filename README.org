@@ -1,15 +1,13 @@
 #+TITLE: Guix System Configuration
 #+OPTIONS: toc:nil num:nil
 
-[[./assets/screenshot.png]]
-
 This is my personal configuration repository for the *GNU Guix System*.
 
 After using NixOS for a while, I’m moving my systems to Guix.
 
 * Links
 
-- [[./home/dotfiles][Dotfiles directory]]
+- [[https://git.ch4og.com/ch4og/guix-home][My Guix Home configuration with dotfiles]]
 - [[https://git.ch4og.com/ch4og/pognul-guix-channel][My personal Guix channel]]
 
 * Acknowledgments
@@ -18,9 +16,6 @@ Big thanks to people and projects that inspired me:
 
 - [[https://codeberg.org/agx-r][@agx-r]] (Codeberg)
 - [[https://codeberg.org/daviwil][@daviwil]] (Codeberg & [[https://systemcrafters.net/][System Crafters]])
-- [[https://github.com/sarg/dotfiles][sarg/dotfiles]] (GitHub)
-- [[https://github.com/end-4/dots-hyprland][end-4/dots-hyprland]] (GitHub)
-- [[https://github.com/caelestia-dots/shell][caelestia-dots/shell]] (GitHub)
 
 No licensed code was copied without credit or compliance. Some code was inspired, not copied or modified.
 All files that include code by others have a note about it in their heading.
