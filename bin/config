@@ -32,7 +32,7 @@
 (define config-root
   (let* ((source-file (current-filename))
          (abs-path (canonicalize-path source-file)))
-    (dirname abs-path)))
+    (dirname (dirname abs-path))))
 
 (define guix
   (string-append "sudo guix time-machine -C " config-root "/channels.scm -- "))
@@ -175,8 +175,8 @@
   (run (string-append "guix home reconfigure "
                       (string-join extra-args " ")
                       " "
-                      config-root
-                      "/home/home.scm")))
+                      (dirname config-root)
+                      "/guix-home/home.scm")))
 
 (define (update)
   (let* ((channels-file (string-append config-root "/channels.scm"))
@@ -217,20 +217,12 @@
       (zyztem rest))
      ((string=? cmd "home")
       (home rest))
-     ((string=? cmd "update")
-      (update))
-     ((string=? cmd "system/")
-      (zyztem rest))
-     ((string=? cmd "home/")
-      (home rest))
      ((string=? cmd "channels")
-      (update))
-     ((string=? cmd "channels.scm")
       (update))
      (else (display "Available commands:\n")
            (display "  system [args...]  - reconfigure system\n")
            (display "  home   [args...]  - reconfigure home\n")
-           (display "  update            - update channels\n")
+           (display "  channels          - update channels\n")
            (exit 1)))))
 
 (main (cdr (command-line)))
