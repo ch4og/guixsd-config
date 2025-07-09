@@ -4,7 +4,7 @@
         (name 'guix)
         (url "https://codeberg.org/guix/guix.git")
         (commit
-          "40e0f4fcc06893d2903b007b567cf8cbf3ae7fbf")
+          "8ee456e2bda8f72ccaf2398a1709a85e6e32d952")
         (introduction
           (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -14,7 +14,7 @@
         (name 'nonguix)
         (url "https://gitlab.com/nonguix/nonguix.git")
         (commit
-          "39424fb09813cebac8d323da75abf80f01e2641f")
+          "c16a92e3bef67a602bc56b0dd20ecdc8cac8c97f")
         (introduction
           (make-channel-introduction
             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
@@ -25,4 +25,4 @@
         (url "https://codeberg.org/ch4og/pognul-guix-channel.git")
         (branch "main")
         (commit
-          "4d7ee41049ef2998aa2a5fff684f3c0c7ff4badc")))
+          "537abcb57df8977d97066876dd442a879a9227fd")))
