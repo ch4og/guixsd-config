@@ -2,9 +2,14 @@
 
 Here I keep some things that I might forget to do:
 
-Zsh: syntax highlighting, autosuggestions, substring search
-Rewrite =config.scm= to use channels from =channels.scm=
+Rewrite =bin/config= to use channels from =modules/channels.scm=
 Move all dotfiles and configs from NixOS config
 Package all tools and utilities I need
 Make Nix fully declarative and integrate with Guix
 Quickshell
+Ssh agent
+Emacs
+Ksh
+Mwc
+Ghostty package
+Try to fix ksh tests
