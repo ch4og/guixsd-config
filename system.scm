@@ -33,11 +33,6 @@
 
 (define %user "ch")
 
-(define config-root
-  (let* ((source-file (current-filename))
-         (abs-path (canonicalize-path source-file)))
-    abs-path))
-
 (with-transformation replace-mesa
 		     (operating-system
 		      (kernel linux)
