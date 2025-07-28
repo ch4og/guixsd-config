@@ -10,6 +10,6 @@ Quickshell
 Ssh agent
 Emacs
 Ksh
-Mwc
-Ghostty package
-Try to fix ksh tests
+nekoray
+move waybar to wm config
+xwayland-satellite
