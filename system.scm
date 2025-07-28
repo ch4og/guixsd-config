@@ -22,6 +22,7 @@
 	     (gnu services shepherd)
 	     (gnu services mcron)
 	     (gnu packages package-management)
+	     (gnu services security-token)
 	     (nonguix utils)
              ;; WIP
              ;;
@@ -114,6 +115,7 @@
 								    "trusted-users = @wheel root"
 								    "warn-dirty = false"))))
 				     (service bluetooth-service-type)
+				     (service pcscd-service-type)
 
 				     (simple-service 'autossh-reverse-tunnel shepherd-root-service-type
 						     (list (shepherd-service
